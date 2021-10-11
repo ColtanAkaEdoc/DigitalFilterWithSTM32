@@ -4,3 +4,9 @@ Attempt to get a digital filter (HP 25kHz, TP 250kHz) up and running with an STM
 
 Theory/Guide:
 https://www.youtube.com/watch?v=QRMe02kzVkA - IIR Filters - Theory and Implementation (STM32) - Phil's Lab
+https://micromodeler.com/dsp/ - Online Filter Generator
+
+Order of operation:
+1. Get the ADC up and running with the Board HAL and the HAL documentation
+2. Get the DAC up and ...
+3. Copy a filter with code from the internet and check its behaviour with a spectrum analyzer
