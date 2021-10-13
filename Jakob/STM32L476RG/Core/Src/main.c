@@ -32,8 +32,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define ADC_BUF_LEN 4096
-#define DAC_BUF_LEN	4096
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -55,12 +54,8 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
-uint16_t adc_buf[ADC_BUF_LEN];
-uint16_t dac_buf[DAC_BUF_LEN];
-uint16_t i;
-
-
-
+// copy new handles to mymain.h
+#include "mymain.h"
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -114,14 +109,13 @@ int main(void)
   MX_DAC1_Init();
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
-  HAL_ADC_Start_DMA(&hadc1, (uint32_t*)adc_buf, ADC_BUF_LEN);
-  HAL_DAC_Start_DMA(&hdac1, DAC1_CHANNEL_1, (uint32_t*)dac_buf, DAC_BUF_LEN/2, DAC_ALIGN_12B_R);
-  HAL_TIM_Base_Start(&htim7);
+
+  mymain();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
+  while (0)
   {
     /* USER CODE END WHILE */
 
@@ -300,9 +294,9 @@ static void MX_TIM7_Init(void)
 
   /* USER CODE END TIM7_Init 1 */
   htim7.Instance = TIM7;
-  htim7.Init.Prescaler = 0;
+  htim7.Init.Prescaler = 1;
   htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim7.Init.Period = 100;
+  htim7.Init.Period = 16;
   htim7.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim7) != HAL_OK)
   {
@@ -402,21 +396,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef* hadc){
 
-	for(i = 0; i < ADC_BUF_LEN/2; i++){
-
-		dac_buf[i] = adc_buf[i];
-		}
-}
-
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
-
-	for(i = ADC_BUF_LEN/2; i < ADC_BUF_LEN; i++){
-
-		dac_buf[i] = adc_buf[i];
-		}
-}
 /* USER CODE END 4 */
 
 /**
