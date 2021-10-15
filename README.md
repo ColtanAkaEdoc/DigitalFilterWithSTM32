@@ -3,10 +3,17 @@
 Attempt to get a digital filter (HP 25kHz, TP 250kHz) up and running with an STM32L476G-DISCO
 
 Theory/Guide:
+
 https://www.youtube.com/watch?v=QRMe02kzVkA - IIR Filters - Theory and Implementation (STM32) - Phil's Lab
+
 https://micromodeler.com/dsp/ - Online Filter Generator
+
+https://deepbluembedded.com/stm32-dac-tutorial-example-hal-code-analog-signal-genreation/ - DAC (with triggers) tutorial
 
 Order of operation:
 1. Get the ADC up and running with the Board HAL and the HAL documentation
 2. Get the DAC up and ...
 3. Copy a filter with code from the internet and check its behaviour with a spectrum analyzer
+
+Estimated Filter-"Power"
+![IMG_5075](https://user-images.githubusercontent.com/62153964/137503139-60a9f56b-82b1-4710-ada8-158d6b80bb3d.jpg)
