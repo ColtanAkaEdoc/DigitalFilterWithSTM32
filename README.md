@@ -14,3 +14,6 @@ Order of operation:
 1. Get the ADC up and running with the Board HAL and the HAL documentation
 2. Get the DAC up and ...
 3. Copy a filter with code from the internet and check its behaviour with a spectrum analyzer
+
+Estimated Filter-"Power"
+![IMG_5075](https://user-images.githubusercontent.com/62153964/137503139-60a9f56b-82b1-4710-ada8-158d6b80bb3d.jpg)
