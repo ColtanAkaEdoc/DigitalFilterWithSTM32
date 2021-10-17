@@ -17,3 +17,12 @@ Order of operation:
 
 Estimated Filter-"Power"
 ![IMG_5075](https://user-images.githubusercontent.com/62153964/137503139-60a9f56b-82b1-4710-ada8-158d6b80bb3d.jpg)
+
+Samling Rate [Msps - Mega samples per secound)
+5.44 Msps @ 12 Bits (S.177 https://github.com/ColtanAkaEdoc/DigitalFilterWithSTM32/blob/main/Documents/Datasheet_Chip-stm32l476vg.pdf)
+
+ENOB - Effective nuber of bits - https://www.itwissen.info/ENOB-effective-number-of-bits.html
+STM32LF76xx -> 10.4 Bits (S.181 https://github.com/ColtanAkaEdoc/DigitalFilterWithSTM32/blob/main/Documents/Datasheet_Chip-stm32l476vg.pdf)
+
+Anti-Alias Filter - Dependent on sample rate (f_s) and ENOB
+Required attenuation reffered to gain within pass range at f_s: 6dB x ENOB
