@@ -4,9 +4,9 @@
 
 [![Generic badge](https://img.shields.io/badge/Working-YES-<COLOR>.svg)](https://shields.io/)
 
-## DMA example, polls adc and writes dac
+## DMA example, using timer to trigger ADC and DAC repeatedly
 
-Uses a timer to trigger the adc and the dac for every sample, regarding in *1 Megasample* throughput. 
+Uses a timer to trigger the adc and the dac for every sample, regarding in *1 Megasample* throughput. The DMA is used to transfer data to the memory. 
 
 Applicable to max. 100 kHz (10 Samples per sine wave)
 
