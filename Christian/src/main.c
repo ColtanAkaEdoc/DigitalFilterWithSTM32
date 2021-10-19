@@ -17,6 +17,7 @@ int main(void)
 {
 	BSP_LED_Init(LED_GREEN);
 	BSP_LED_On(LED_GREEN);
+	HAL_RCC_ClockConfig( )
 
 	for(;;);
 }
