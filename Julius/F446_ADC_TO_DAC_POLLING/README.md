@@ -2,6 +2,8 @@
 
 ## Target: NUCLEO-F446RE
 
+[![Generic badge](https://img.shields.io/badge/Working-YES-<COLOR>.svg)](https://shields.io/)
+
 ## Polling example, polls adc and writes dac
 Worked to approx. 30 kHz
 
