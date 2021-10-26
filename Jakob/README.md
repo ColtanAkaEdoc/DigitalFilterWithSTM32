@@ -14,6 +14,8 @@ In addition to getting this to run, this folder also expands on the idea of filt
 ## Further notes:
 This [video](https://www.youtube.com/watch?v=ThFfI-JSv2Y) explains a basic workflow (also implemented by Julius). HOWEVER, the loss of data even occurs in this video but is not adressed. Qustion still stands.
 
+Very good [source](https://www.youtube.com/watch?v=vCcALaGNlyw) on audio, stm32, IIR and CMSIS specific stuff.
+
 ### Comments on the issue:
 
 >"The explanation is excellent, thank you very much! I have a question, for the processing function, shouldn't you have a flag to stop processing until the other half is ready? Otherwise you process over and over the same buffer until the pointers are swapped. Perhaps after the processing function ends the core could be put to sleep until the next interrupt to save some energy. Just a thought, great tutorial."
