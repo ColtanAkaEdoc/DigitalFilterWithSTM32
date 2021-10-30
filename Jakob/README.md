@@ -29,6 +29,26 @@ Very good [source](https://www.youtube.com/watch?v=vCcALaGNlyw) on audio, stm32,
 
 ## Observations:
 
+### Breakthrough:
+
+The code s now able to compute the digital representation of various filters of the 2nd order. This was made possible by the following resources:
+
+* [Video](https://www.youtube.com/watch?v=vCcALaGNlyw) on STM32 DSP with CMSIS by ARM by "YetAnotherElectronicsChannel"
+* ARM CMSIS DSP [library](https://www.keil.com/pack/doc/CMSIS/DSP/html/index.html)
+* A simple filter generator "[Biquad generator](https://www.earlevel.com/main/)"
+
+Note that this software DSP runs an IIR-filter. These are faster to compute since they require less MAC-operations than FIR-filters. However, they achieve less precision and suffer from wild phase shifts. This makes them good for "throwaway" tasks such as calculating 1/3 octave displays as low-res FFT-bins which don't require absolute precision.
+
+![f](meas_bp_first.png)
+
+>Example of a digital bandpass in the hearable spectrum. Measured with Omicron Bode 100
+
+*Careful with the I/O offset: 
+Since the board does not have negative voltage all signals range from 0 to 3.3V. This requires offset from the signal-source which then produces `uint12_t` values from 0 to `MAX_VAL`. To achieve nominal operation, all samples have to be subtracted with `MAX_VAL / 2` and THEN filtered. Before the DAC-output the offset should then be added again.*
+>29.10.21
+
+### Sampling problems...
+
 The knot in my head currently revolves around the ring-buffer, effectively acting as the better ring buffer than the actual one.
 
 `joke break;`
