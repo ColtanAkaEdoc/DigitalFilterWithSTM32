@@ -6,6 +6,7 @@
  * */
 
 #include "mymain.h"
+#include "coeff.h"
 
 // buffers
 uint32_t adc_buf[FULL_BUF_LEN];
@@ -63,13 +64,13 @@ float iir_state [4];
 //		-0.8948733894398211f
 //};
 // band pass 25khp 250ktp
-float iir_coeffs [5] = {
-		0.2930279845747092f,
-		0,
-		-0.2930279845747092f,
-		1.3695223790602151f,
-		-0.41394403085058157f
-};
+//float iir_coeffs [5] = {
+//		0.2930279845747092f,
+//		0,
+//		-0.2930279845747092f,
+//		1.3695223790602151f,
+//		-0.41394403085058157f
+//};
 
 // functions
 int mymain(void){
@@ -82,7 +83,9 @@ int mymain(void){
 
 
 	//init IIR structure
-	arm_biquad_cascade_df1_init_f32 ( &iirsettings, 1, &iir_coeffs[0], &iir_state[0]);
+
+	arm_biquad_cascade_df1_init_f32 ( &iirsettings, 1, &iir_coeff[17][0], &iir_state[0]);
+
 	HAL_TIM_Base_Start(&htim7);
 	while(1){
 		dsp();
@@ -92,8 +95,8 @@ int mymain(void){
 void dsp(void){
 
 	if(hlfcplt || cplt){
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
 
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
 		for(i = 0; i < HALF_BUF_LEN; i++){
 
 			//toDSP_buf[i] = (float)pIn[i];

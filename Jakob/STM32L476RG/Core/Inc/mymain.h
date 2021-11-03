@@ -12,7 +12,7 @@
 #include "main.h"
 #include "arm_math.h"
 
-#define FULL_BUF_LEN 		512
+#define FULL_BUF_LEN 		1024
 #define HALF_BUF_LEN		FULL_BUF_LEN/2
 
 DAC_HandleTypeDef hdac1;

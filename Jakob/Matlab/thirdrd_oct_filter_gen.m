@@ -1,4 +1,4 @@
-fs = 200000;
+fs = 40000;
 bw = 1/3;
 
 fMin = 20;
@@ -19,7 +19,7 @@ a = cell(numBands,1);
 figure
 for nn = 1:length(fc)
 
-    [b{nn},a{nn}] = butter(2, [fl(nn) fu(nn)]/(fs/2), 'bandpass');
+    [b{nn},a{nn}] = butter(2, [fl(nn) fu(nn)]/(fs/2), 'bandpass')
     [h,f]=freqz(b{nn},a{nn},1024,fs);
 
     hold on;
@@ -27,5 +27,5 @@ for nn = 1:length(fc)
 
 end
 set(gca, 'XScale', 'log')
-xlim([20 20000])
+%xlim([20 20000])
 ylim([-50 0])
