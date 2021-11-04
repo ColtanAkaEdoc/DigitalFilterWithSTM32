@@ -1,0 +1,64 @@
+!SESSION 2021-11-04 07:51:02.319 -----------------------------------------------
+eclipse.buildId=Version 1.7.0
+java.version=11.0.10
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_AT
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2021-11-04 07:52:23.722
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2021-11-04 07:52:23.843
+!MESSAGE Log4j initialized with config file C:\Users\J\OneDrive - FH Vorarlberg\Partnerunternehmen FHV\Projekte\Noise Classification\Embedded neural networks\group_project_dsp_stm32\DigitalFilterWithSTM32\Jakob\STM32L476RG\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2021-11-04 07:52:41.170
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2021-11-04 07:54:20.240 -----------------------------------------------
+eclipse.buildId=Version 1.7.0
+java.version=11.0.10
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_AT
+Framework arguments:  C:\Users\J\OneDrive - FH Vorarlberg\Partnerunternehmen FHV\Projekte\Noise Classification\Embedded neural networks\group_project_dsp_stm32\DigitalFilterWithSTM32\Jakob\STM32L476RG\.project
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 C:\Users\J\OneDrive - FH Vorarlberg\Partnerunternehmen FHV\Projekte\Noise Classification\Embedded neural networks\group_project_dsp_stm32\DigitalFilterWithSTM32\Jakob\STM32L476RG\.project
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2021-11-04 07:54:35.095
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2021-11-04 07:54:35.157
+!MESSAGE Log4j initialized with config file C:\Users\J\OneDrive - FH Vorarlberg\Partnerunternehmen FHV\Projekte\Noise Classification\Embedded neural networks\group_project_dsp_stm32\DigitalFilterWithSTM32\Jakob\STM32L476RG\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2021-11-04 07:54:45.657
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2021-11-04 08:01:48.769 -----------------------------------------------
+eclipse.buildId=Version 1.7.0
+java.version=11.0.10
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=de_AT
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.ui 2 0 2021-11-04 08:03:15.407
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2021-11-04 08:03:15.407
+!MESSAGE Cannot bind to an undefined command: plug-in='com.genuitec.eclipse.theming.ui', id='com.genuitec.myeclipse.help.darktheme.commandid'
+
+!ENTRY com.genuitec.eclipse.theming.ui 1 0 2021-11-04 08:03:16.385
+!MESSAGE A DevStyle Theme is being activated on this workspace; preparing colors and configuration
+
+!ENTRY com.genuitec.eclipse.theming.ui 1 0 2021-11-04 08:03:16.427
+!MESSAGE DevStyle has archived current color configurations to alternate preferences - will be restored when switching out of the DevStyle Theme
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2021-11-04 08:03:23.604
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2021-11-04 08:03:23.677
+!MESSAGE Log4j initialized with config file C:\Users\J\OneDrive - FH Vorarlberg\Partnerunternehmen FHV\Projekte\Noise Classification\Embedded neural networks\group_project_dsp_stm32\DigitalFilterWithSTM32\Jakob\STM32L476RG\.metadata\.log4j.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2021-11-04 08:03:32.613
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\J'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2021-11-04 08:03:39.315
+!MESSAGE Started RMI Server, listening on port 41337
