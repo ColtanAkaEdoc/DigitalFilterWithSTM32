@@ -22,26 +22,47 @@ uint8_t hlfcplt = 0;
 uint8_t cplt = 0;
 
 // IIR-filter instance struct
-arm_biquad_casd_df1_inst_f32 iirsettings;
+arm_biquad_casd_df1_inst_f32 iirsettings[N_IIR_FILTERS];
+
+// FIR-decimator instance struct
+arm_fir_decimate_instance_f32 firdsettings[N_FIR_DECIMATORS]
 
 // 4 delayed samples per biquad
-float iir_state [4];
+float iir_state [N_IIR_FILTERS][4];
+
+// ? delayed samples per FIR
+float fir_state [N_FIR_DECIMATORS][4];
 
 // functions
 int mymain(void){
 
+	// start timer 6
 	HAL_TIM_Base_Start(&htim6);
+
+	// start ADC
 	HAL_ADC_Start_DMA(&hadc1, adc_buf, FULL_BUF_LEN);
+
+	// This will be deleted after enough testing has been done
 	HAL_DAC_Start_DMA(&hdac1, DAC1_CHANNEL_1, dac_buf, FULL_BUF_LEN, DAC_ALIGN_12B_R);
 
+	// create shift between timers
 	HAL_Delay(1);
 
-
-	//init IIR structure
-
-	arm_biquad_cascade_df1_init_f32 ( &iirsettings, 1, &iir_coeff[17][0], &iir_state[0]);
-
+	// start timer 7
 	HAL_TIM_Base_Start(&htim7);
+
+	// init 30 IIR structures
+	for(uint8_t i = 0; i < N_FILTERS; i++)
+	{
+		arm_biquad_cascade_df1_init_f32(&iirsettings[i], N_BIQUADS, &iir_coeff[i][0], &iir_state[i][0]);
+	}
+
+	// init 10 decimators
+	for(uint8_t i = 0; i < N_FIR_DECIMATORS; i++)
+	{
+		arm_fir_decimate_init_f32(firdsettings[i], N_TAPS, (i), pCoeffs, pState, blockSize)
+	}
+
 	while(1){
 		dsp();
 	}
