@@ -2,8 +2,8 @@
 #define _COEFFICIENTS_H_
 
 // info:
-// number of bands: 30
-// contains coeffs for 30 sets of 3-section biquad 1/3rd octave filters
+// number of bands: 31
+// contains coeffs for 31 sets of 3-section biquad 1/3rd octave filters
 float iir_31[] = {
     // fs = 48000, fl = 18245.6057, fu = 22988.0227
     1,    0,    -1,    1.2094,    0.60865,

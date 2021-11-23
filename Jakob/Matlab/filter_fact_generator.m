@@ -11,11 +11,11 @@ fmax = 20480;   % [Hz] minimal desired high-end
 oct_bw_ratio = 1/3; % [1] desired octave-split
 
 n_octs = log2(fmax/fmin);               % [1] number of octaves from fmin to fmax
-n_bands = ceil(n_octs/oct_bw_ratio);    % [1] number of octave divisions from fmin to fmax
+n_thirds = ceil(n_octs/oct_bw_ratio);   % [1] number of octave divisions from fmin to fmax
 n_coeffs_p_section = 6;
 n_sections = 3;
 
-fc = fmin*2.^((0:n_bands) * oct_bw_ratio);  % [Hz] center frequencies. 
+fc = fmin*2.^((0:n_thirds) * oct_bw_ratio);  % [Hz] center frequencies. 
                                             % "(0:n_bands)" means to iterate from 0 to n_bands 
                                             % and store result in vector
 fl = fc*2^(-oct_bw_ratio/2);                % lower cutoffs @ -3dB (required by filter-designer)
@@ -26,22 +26,39 @@ fu = fc*2^(+oct_bw_ratio/2);                % upper cutoffs @ -3dB (required by 
 %*************************************
 h_name = "_COEFFICIENTS_H_";
 header =    "#ifndef " + h_name + newline + "#define " + h_name + newline + newline + ...
-            '// info:' + newline + '// number of bands: ' + string(n_bands) + newline + ...
-            '// contains coeffs for 30 sets of 3-section biquad 1/3rd octave filters' + newline;
+            '// info:' + newline + '// number of bands: ' + string(n_thirds + 1) + newline + ...
+            '// contains coeffs for 31 sets of 3-section biquad 1/3rd octave filters' + newline;
 
-path = './coefficients.h';
+path = '../STM32L476RG/Core/Inc/coefficients.h';
 fileID = fopen(path ,'w');
 fprintf(fileID, header);
 fclose(fileID);
 
 fileID = fopen(path ,'a');
+scalings = cell(n_thirds + 1,1);
 
-for i_b = 0:n_bands
+% Loop through all filters and insert coefficients
+%*************************************
+for i_b = 0:n_thirds
     
-    index = 1 + n_bands - i_b;
-    filter = gen_iir_osix_bp(fl(index), fu(index), fs);
+    index = 1 + n_thirds - i_b;
+    filter = gen_iir_osix_bp(fl(index), fu(index), fs); % filter creation
+    scaler = 20*log10(  filter.ScaleValues(1) * ... % scales magnitude of filter back to 0dB
+                        filter.ScaleValues(2) * ...
+                        filter.ScaleValues(3) * ...
+                        filter.ScaleValues(4));
+    scalings{i_b+1} = scaler;              
+    [b,a] = sos2tf(filter.sosMatrix);       % convert sosMatrix to transfer function coefficients
+    [h,f] = freqz(b, a, 1024, fs);          % 1024 ???????
+    plot(f, 20*log10(abs(h)) + scaler );    % plot magnitude in absolute frequency and scaled to 0dB
     
-    name = append('float iir_', string(index), '[] = {', newline, ...
+    hold on;
+    
+    set(gca, 'XScale', 'log');  % show plot in log-scale
+    ylim([-80 0]);              % only show up to a damping of -80dB
+    %xlim([20 20000]);           % only show a bandwidth of 20-20000 Hz
+    
+    name = append('float iir_', string(index), '[] = {', newline, ...   % add declaration of filter array
                   '    // fs = ', string(fs), ...
                   ', fl = ', string(fl(index)), ...
                   ', fu = ', string(fu(index)) ...
@@ -77,6 +94,10 @@ end
 fprintf(fileID, '#endif // coefficients.h');
 fclose(fileID);
 
-
-
-
+% create txt-file with scalings for later import
+file_s = fopen('../STM32L476RG/Core/Inc/scalings.txt', 'w');
+for n = 1:n_thirds+1
+    content = string(scalings{n}) + ',' + newline;
+    fprintf(file_s, content);
+end
+fclose(file_s);
